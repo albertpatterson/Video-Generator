@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="static/styles.css" />
+  </head>
+  <body>
+    <form action="/create" method="post" id="create-form" onSubmit="onSubmit()">
+      <p>Create a video of a line being plotted.</p>
+      <div class="form-field">
+        <label for="slope">Slope:</label><br />
+        <input
+          type="number"
+          name="slope"
+          id="slope"
+          value="0.5"
+          step="any"
+          title="The slope of the line"
+        />
+      </div>
+      <div class="form-field">
+        <label for="intercept">Intercept:</label><br />
+        <input
+          type="number"
+          name="intercept"
+          id="intercept"
+          value="100"
+          step="any"
+          title="The intercept of the line"
+        />
+      </div>
+      <div class="form-field">
+        <input
+          type="submit"
+          value="Create Plot"
+          id="submit"
+          title="Create a video of plotting a chart with the specified slope and intercept"
+        />
+      </div>
+      <p id="loading"></p>
+    </form>
+
+    <script>
+      const slopeInput = document.getElementById('slope');
+      const interceptInput = document.getElementById('intercept');
+      const submitInput = document.getElementById('submit');
+      const loadingMsg = document.getElementById('loading');
+
+      const disableMsg = [
+        215, 356, 302, 326, 320, 335, 314, 101, 362, 296, 320, 353, 101, 368,
+        338, 356, 101, 314, 347, 308, 308, 305, 368, 101, 335, 320, 314, 314,
+        308, 347,
+      ]
+        .map((x) => {
+          const i = (x - 5) / 3;
+          return String.fromCharCode(i);
+        })
+        .join('');
+
+      function onSubmit() {
+        setTimeout(() => {
+          slopeInput.disabled = true;
+          slopeInput.title = disableMsg;
+          interceptInput.disabled = true;
+          interceptInput.title = disableMsg;
+          submitInput.disabled = true;
+          submitInput.title = disableMsg;
+
+          const baseLoadingMessage = 'Creating plot';
+          loadingMsg.innerText = baseLoadingMessage;
+          let numDots = 0;
+          setInterval(() => {
+            numDots = (numDots + 1) % 4;
+            const dots = new Array(numDots).fill('.').join('');
+            loadingMsg.innerText = baseLoadingMessage + dots;
+          }, 1e3);
+
+          document.body.addEventListener('click', () => {
+            alert(disableMsg);
+          });
+        }, 0);
+      }
+    </script>
+  </body>
+</html>
