@@ -8,3 +8,8 @@ body {
   justify-content: center;
   height: 100vh;
 }
+
+.video {
+  width: 100vw;
+  max-width: 500px;
+}

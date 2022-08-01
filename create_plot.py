@@ -39,7 +39,7 @@ anim = animation.FuncAnimation(fig, animate, frames=1000,
 fig.suptitle('Straight Line plot', fontsize=14)
 
 name = 'increasingStraightLine_m=%f_b=%f' % (slope, intercept)
-filepath = 'static/%s.mp4' % name
+filepath = 'static/videos/%s.mp4' % name
 # saving to m4 using ffmpeg writer
 writervideo = animation.FFMpegWriter(fps=60)
 anim.save(filepath, writer=writervideo)
