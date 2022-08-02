@@ -18,10 +18,9 @@ Web app generating a video of a line being plotted via matplotlib
 
 - Clone this repository
 - `pip install -r requirements.txt`
+- install ffmpeg. On mac it can be installed in the same repository and the path specified in create_plot.py. On Windows and Linux, install the compatible executable, add it to the path and remove the path specified in create_plot.py
 - `python app.py`
 - The address that the service is running on will be printed to the terminal
-- Possible Issues
-  - ffmpeg may not work for your system. The provided executable and path specified in create_plot.py works on mac, but on windows and linux one should install the appropriate executable, add it to the path, and remove the previously mentioned path specification
 
 ## Setup on a Raspberry Pi
 
